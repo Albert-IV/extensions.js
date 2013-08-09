@@ -1,6 +1,6 @@
-(function() {
-  var OBJECT_EXT = {},
-      DATE_EXT = {};
+!function() {
+  var DATE_EXT = {},
+      ARR_EXT = {};
 
   var extendMe;
 
@@ -12,11 +12,12 @@
     };
   })();
 
-  DATE_EXT.format = (function(options) {
-    return function(options) {
-      console.log(options);
+  ARR_EXT.merge = (function() {
+    return function(arr) {
+      Array.prototype.push.apply(this, arr);
+      return this;
     };
-  })(options);
+  })();
 
   if (Object.defineProperty) {
 
@@ -41,4 +42,5 @@
   }
 
   extendMe(Date, DATE_EXT);
-})();
+  extendMe(Array, ARR_EXT);
+}();
