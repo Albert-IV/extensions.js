@@ -12,6 +12,13 @@
     };
   })();
 
+  DATE_EXT.isDate = (function() {
+    return function() {
+      if( isNaN( this.getTime() ) ) return false;
+      else return true;
+    };
+  })();
+
   ARR_EXT.merge = (function() {
     return function(arr) {
       Array.prototype.push.apply(this, arr);
