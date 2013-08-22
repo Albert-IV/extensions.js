@@ -74,6 +74,25 @@
     };
   })();
 
+  String.prototype.formatPhone = function() {
+    var numStr = this.replace(/[^0-9]/g, '');
+    var result = '';
+
+    while (numStr.length < 10) {
+      numStr += '_';
+    }
+
+    result += '(' + numStr.substring(0, 3) + ') ';
+    result += numStr.substring(3, 6) + '-';
+    result += numStr.substring(6, 10);
+
+    if (numStr.length > 10) {
+      result += ' x' + numStr.substring(11);
+    }
+
+    return result;
+  };
+
   if (Object.defineProperty) {
 
     extendMe = function(nativeObj, extensions) {
