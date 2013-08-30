@@ -93,6 +93,23 @@
     return result;
   };
 
+  String.prototype.trim = function(str) {
+    var string = str || this,
+        changed = false;
+
+    if (string.substr(0, 1) == ' ') {
+      string = string.substring(1);
+      changed = true;
+    }
+
+    if (string.substr((string.length -1), 1) == ' ') {
+      string = string.substr(0, (string.length - 1));
+      changed = true;
+    }
+
+    return (changed ? this.trim(string) : string);
+  };
+
   if (Object.defineProperty) {
 
     extendMe = function(nativeObj, extensions) {
