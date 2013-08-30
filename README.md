@@ -67,5 +67,9 @@ This method returns the string without leading or ending spaces.
 
 
 
+####A Small Note
 
+According to some, you shouldn't be adding prototypes to native JavaScript.  [Here's an article from someone who's probably smarter than me.](http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/)
 
+tl;dr
+It's probably not as bad as you think.
