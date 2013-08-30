@@ -2,11 +2,13 @@ var labelCheck = new Date().getLabel,
     mergeCheck = [].merge,
     isDateCheck = new Date().isDate,
     getCheck = {}.get,
-    phoneLabelCheck = ''.formatPhone;
+    phoneLabelCheck = ''.formatPhone,
+    trimCheck = ''.trim;
 
 var arr1 = [1,2,3,4,5],
     arr2 = [6,7,8,9,0],
     phoneString = "+(573)321-1124",
+    trimString = "    Hello Everyone!   ",
     deepObj = {
       name: [
         {
@@ -38,3 +40,5 @@ document.getElementById('fail-get').innerHTML =
 document.getElementById('phone-label').innerHTML =
   phoneLabelCheck && phoneString.formatPhone() || phoneLabelCheck;
   
+document.getElementById('trim-label').innerHTML =
+  trimCheck && trimString.trim() || trimCheck;
