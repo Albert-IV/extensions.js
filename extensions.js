@@ -15,10 +15,61 @@
 
   DATE_EXT.isDate = (function() {
     return function() {
-      if( isNaN( this.getTime() ) ) return false;
-      else return true;
+      return !isNaN( this.getTime() );
     };
   })();
+
+  DATE_EXT.getDelta = (function() {
+    return function(deltaDate) {
+      if( typeof deltaDate == "string" ) deltaDate = new Date(deltaDate);
+      if( !this.isDate() || !deltaDate.isDate() ) return false;
+      
+      // Get # of milliseconds between dates
+      var delta = this.getTime() > deltaDate.getTime() ?
+                          this.getTime() - deltaDate.getTime() :
+                          deltaDate.getTime() - this.getTime();
+
+      // Set up some helper methods
+      var toSecond = function(d) { return Math.floor( d / 1000 ); }
+        , secondToMilli = function(d) { return d * 1000; }
+
+        , toMinute = function(d) { return Math.floor( d / 1000 / 60 ); } 
+        , minuteToMilli = function(d) { return d * 1000 * 60; }
+
+        , toHour = function(d) { return Math.floor( d / 1000 / 60 / 60 ); }
+        , hourToMilli = function(d) { return d * 1000 * 60 * 60; }
+
+        , toDay = function(d) { return Math.floor( d / 1000 / 60 / 60 / 24 ); }
+        , dayToMilli = function(d) { return d * 1000 * 60 * 60 * 24; };
+
+      // Calculate Days and remove from total delta
+      var dayDelta = toDay( delta );
+      delta -= dayToMilli( dayDelta );
+
+      // Calculate hours, remove from total again
+      var hourDelta = toHour( delta );
+      delta -= hourToMilli( hourDelta );
+
+      // Calculate minutes
+      var minuteDelta = toMinute( delta );
+      delta -= minuteToMilli( minuteDelta );
+
+      // And seconds
+      var secondDelta = toSecond( delta );
+      delta -= secondToMilli( secondDelta );
+      // Leftover delta === millisecond time delta
+
+      // Return that shit!
+      return {
+        "days" : dayDelta,
+        "hours" : hourDelta,
+        "minutes" : minuteDelta,
+        "seconds" : secondDelta,
+        "milliseconds" : delta
+      };
+    };
+  })();
+
 
   ARR_EXT.merge = (function() {
     return function(arr) {
