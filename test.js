@@ -3,10 +3,13 @@ var labelCheck = new Date().getLabel,
     isDateCheck = new Date().isDate,
     getCheck = {}.get,
     phoneLabelCheck = ''.formatPhone,
-    trimCheck = ''.trim;
+    trimCheck = ''.trim,
+    dateDeltaCheck = new Date().getDelta;
 
 var arr1 = [1,2,3,4,5],
     arr2 = [6,7,8,9,0],
+    date1 = new Date(2000, 0, 1), // January 1st, 2000
+    date2 = new Date(2000, 0, 4), // January 4th, 2000
     phoneString = "+(573)321-1124",
     trimString = "    Hello Everyone!   ",
     deepObj = {
@@ -42,3 +45,6 @@ document.getElementById('phone-label').innerHTML =
   
 document.getElementById('trim-label').innerHTML =
   trimCheck && trimString.trim() || trimCheck;
+
+document.getElementById('date-delta').innerHTML = 
+  dateDeltaCheck && "<pre><code>" + JSON.stringify( date1.getDelta( date2 ), null, '  ' ) + "</code></pre>" || dateDeltaCheck;
