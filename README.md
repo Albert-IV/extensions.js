@@ -21,8 +21,19 @@ This method returns `true` or `false` depending on if the Date object is a valid
 var date = new Date();
 date.getLabel();    //  Returns in this format: "MM/DD/YY"
 ```
-This returns the American-formatted date as a String. (Sorry, rest of the world!)
+This returns the 'murrican-formatted date as a String. (Sorry, rest of the world!)
 
+## Date.prototype.getDelta()
+```javascript
+var date1 = new Date( 2000, 0, 1), date2 = new Date( 2000, 0, 4);
+date1.getDelta( date2 );  // Returns object with delta
+
+//  ============ OR ==============
+
+var date1 = new Date( 2000, 0, 1), date2 = "January 4th, 2000";
+date1.getDelta( date2 );  // Also accepts date strings
+```
+Returns an object with the caluclated delta difference.  Currently only up to day (ie no months are ever returned).
 
 
 #ARRAYS
