@@ -180,7 +180,7 @@
 
     extendMe = function(nativeObj, extensions) {
       for (var extension in extensions) {
-        obj.prototype[extension] = extensions[extension];
+        nativeObj.prototype[extension] = extensions[extension];
       }
     };
   }
