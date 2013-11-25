@@ -19,9 +19,9 @@ This method returns `true` or `false` depending on if the Date object is a valid
 ## Date.prototype.getLabel()
 ```javascript
 var date = new Date();
-date.getLabel();    //  Returns in this format: "MM/DD/YY"
+date.getLabel();    //  Returns in this format: "MONTH DD, YYYY"
 ```
-This returns the 'murrican-formatted date as a String. (Sorry, rest of the world!)
+This returns the date as a formatted date string.
 
 ## Date.prototype.getDelta()
 ```javascript

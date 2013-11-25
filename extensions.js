@@ -1,3 +1,4 @@
+"use strict"
 !function() {
   var DATE_EXT = {},
       ARR_EXT = {},
@@ -9,7 +10,8 @@
     return function() {
       if( isNaN( this.getTime() ) ) return NaN;
 
-      return (this.getMonth() + 1) + '/' + this.getDate() + '/' + this.getFullYear().toString().substr(2,2);
+      var dateParts = this.toString().split(' ');
+      return dateParts[1] + ' ' + dateParts[2] + ', ' + dateParts[3];
     };
   })();
 
