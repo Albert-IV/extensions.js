@@ -19,7 +19,7 @@ This method returns `true` or `false` depending on if the Date object is a valid
 ## Date.prototype.getLabel()
 ```javascript
 var date = new Date();
-date.getLabel();    //  Returns in this format: "MONTH DD, YYYY"
+date.getLabel();    //  Returns in this format: "MTH DD YYYY"
 ```
 This returns the date as a formatted date string.
 
