@@ -10,8 +10,7 @@
     return function() {
       if( isNaN( this.getTime() ) ) return NaN;
 
-      var dateParts = this.toString().split(' ');
-      return dateParts[1] + ' ' + dateParts[2] + ', ' + dateParts[3];
+      return this.toString().split(' ').slice(1,4).join(' ');
     };
   })();
 
