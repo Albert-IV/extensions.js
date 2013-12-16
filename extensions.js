@@ -14,12 +14,6 @@
     };
   })();
 
-  DATE_EXT.isDate = (function() {
-    return function() {
-      return !isNaN( this.getTime() );
-    };
-  })();
-
   DATE_EXT.getDelta = (function() {
     return function(deltaDate) {
       if( typeof deltaDate == "string" ) deltaDate = new Date(deltaDate);
@@ -77,6 +71,15 @@
       Array.prototype.push.apply(this, arr);
       return this;
     };
+  })();
+
+  OBJ_EXT.isDate = (function() {
+    return function() {
+      return  this instanceof Date &&
+              this.getTime &&
+              !isNaN( this.getTime() ) ||
+              false;
+    }
   })();
 
   OBJ_EXT.get = (function() {
