@@ -6,11 +6,6 @@ describe('Date Extensions', function() {
   var date = new Date(2000, 0, 1),
       date2 = new Date(2000, 0, 4);
 
-  describe('passing Test', function() {
-    should(true).be.ok;
-  })
-
-
   //////////////////////////////////////
   // Checks that date functions exist //
   //////////////////////////////////////
@@ -36,10 +31,13 @@ describe('Date Extensions', function() {
   // Verifies Date extensions work as shoulded //
   ///////////////////////////////////////////////
 
-  it('should have isDate return true', function() {
-    should( date.isDate() ).be.ok;
+  it('should have isDate return correctly', function() {
+    should( date.isDate()  ).be.ok;
     should( date2.isDate() ).be.ok;
-    should( !{}.isDate() ).be.ok;
+
+    should(   {}.isDate() ).not.be.ok;
+    should( ("").isDate() ).not.be.ok;
+    should( (55).isDate() ).not.be.ok;
   });
 
   it('should have getLabel return correct string', function() {
@@ -47,9 +45,12 @@ describe('Date Extensions', function() {
     date2.getLabel().should.equal( 'Jan 04 2000');
   });
 
-  describe('should have getDelta equal what is expected', function() {
+  it('should have getDelta equal what is expected', function() {
     ( date.getDelta( date2 ) ).should.eql({ days : 3, hours : 0, minutes : 0, seconds : 0, milliseconds : 0 });
     ( date2.getDelta( date ) ).should.eql({ days : 3, hours : 0, minutes : 0, seconds : 0, milliseconds : 0 });
   });
 
+});
+
+describe('Array Extensions', function() {
 });
