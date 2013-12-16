@@ -11,10 +11,17 @@ Ever needed to get a human readable date from a Date object?  Ever reached deep 
 
 ## Date.prototype.isDate()
 ```javascript
-var date = new Date();
+var date = new Date()
+  , badDate = new Date('This is not a date')
+
 date.isDate();    // returns true
+badDate.isDate(); // returns false
+
+{}.isDate();      // returns false
+"March".isDate()  // returns false
+(55).isDate()     // returns false
 ```
-This method returns `true` or `false` depending on if the Date object is a valid date.  No more `!isNaN(dateObj)`
+This method returns `true` or `false` depending on if the Date object is a valid date.  No more `!isNaN(dateObj.getTime())`
 
 ## Date.prototype.getLabel()
 ```javascript
