@@ -1,0 +1,25 @@
+{
+  "name": "Extensions.js",
+  "version": "0.0.2",
+  "description": "Useful Extensions for Javascript Natives",
+  "main": "extensions.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "should": "~2.1.1",
+    "mocha": "~1.15.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha ./tests/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/droppedonjapan/extensions.js.git"
+  },
+  "author": "Albert Engelbrecht <dropped.on.japan@gmail.com>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "f6fae5d100d9496444688c9526f4850f88b1ea2e"
+}
