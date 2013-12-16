@@ -53,4 +53,23 @@ describe('Date Extensions', function() {
 });
 
 describe('Array Extensions', function() {
+
+  it('should have Array.merge defined', function() {
+    should( [].merge ).be.ok;
+  });
+
+  it('should return merged array', function() {
+    var arr1 = [1,2,3],
+        arr2 = [4,5,6];
+
+    ( arr1.merge(arr2) ).should.eql([1, 2, 3, 4, 5, 6]);
+  });
+
+  it('should alter original array', function() {
+    var arr1 = [1,2,3],
+        arr2 = [4,5,6];
+
+    arr1.merge(arr2);
+    arr1.should.eql([1, 2, 3, 4, 5, 6]);
+  });
 });
