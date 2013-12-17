@@ -1,6 +1,7 @@
 require('../extensions.js')
 
 var should = require('should');
+// var mongoose = require('mongoose');
 
 describe('Date.prototype', function() {
   var date = new Date(2000, 0, 1),
