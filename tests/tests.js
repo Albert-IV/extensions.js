@@ -13,11 +13,23 @@ describe('Date.prototype', function() {
   //////////////////////////////////////
 
 
-  it('.isDate should return function', function() {
-    var isDateCode = new Date().isDate;
+  it('.isDate should return function for all types', function() {
+    var dateIsDateCode   = new Date().isDate
+      , objectIsDateCode = {}.isDate
+      , arrayIsDateCode  = [].isDate
+      , stringIsDateCode = "".isDate;
+
+    ( dateIsDateCode ).should.be.ok;
+    ( typeof dateIsDateCode ).should.equal( "function" );
+
+    ( objectIsDateCode ).should.be.ok;
+    ( typeof objectIsDateCode ).should.equal( "function" );
     
-    ( isDateCode ).should.be.ok;
-    ( typeof isDateCode ).should.equal( "function" );
+    ( arrayIsDateCode ).should.be.ok;
+    ( typeof arrayIsDateCode ).should.equal( "function" );
+
+    ( stringIsDateCode ).should.be.ok;
+    ( typeof stringIsDateCode ).should.equal( "function" );
   });
 
   it('.getLabel should return function', function() {
@@ -97,4 +109,55 @@ describe('Array Extensions', function() {
 
 describe('Object Extensions', function() {
 
+  it('.get should return function', function() {
+    var getFunction = {}.get;
+
+    ( getFunction ).should.be.ok;
+    ( typeof getFunction ).should.equal( "function" );
+  });
+
+  it('.get() on obj.key should work', function() {
+    var obj = { foo : "bar" };
+
+    ( obj.get("foo") ).should.equal('bar');
+    ( typeof obj.get("name") ).should.equal( "undefined" );
+  });
+
+  it('.get() o obj.key[i] should work', function() {
+    var obj = { arr : [ "string"] };
+
+    ( obj.get("arr[0]") ).should.equal( "string" );
+    ( typeof obj.get("arr[2]") ).should.equal( "undefined" );
+  });
+
+  it('.get() should work on arrays too!', function() {
+    var obj = { arr : [ ]}
+    var arrObj = [ "string", { name : 'Jim' } ];
+
+    ( arrObj.get('[0]') ).should.equal( "string" );
+    ( arrObj.get('[1]') ).should.eql( { name : "Jim" } );
+    ( typeof arrObj.get('[3]') ).should.equal( "undefined" );
+  });
+
+  /*
+    TODO: Handle more edge-cases.
+     - dot syntax for arrays:  obj.arr.0.someOtherProperty
+     - syntax-mix?:  obj.arr[0].anotherArr.0
+  */
+});
+
+describe('String Extensions', function() {
+
+  it('.formatPhone should return function', function() {
+    var formatPhone = "".formatPhone;
+
+    ( formatPhone ).should.be.ok;
+    ( typeof formatPhone ).should.equal( 'function' );
+  });
+
+  it('.formatPhone should return expected format', function() {
+    var formattedPhone = "737-4844832 x58";
+
+    ( formattedPhone.formatPhone() ).should.equal( "(737) 484-4832 x58" )
+  });
 });
