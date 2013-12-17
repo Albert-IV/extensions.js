@@ -2,74 +2,99 @@ require('../extensions.js')
 
 var should = require('should');
 
-describe('Date Extensions', function() {
+describe('Date.prototype', function() {
   var date = new Date(2000, 0, 1),
       date2 = new Date(2000, 0, 4);
 
+
+  it('should return 1 equals 1', function() { (1).should.equal(1); });  
   //////////////////////////////////////
   // Checks that date functions exist //
   //////////////////////////////////////
 
 
-  it('should return truthy values for isDate', function() {
+  it('.isDate should return function', function() {
     var isDateCode = new Date().isDate;
-    should( isDateCode ).be.ok;
+    
+    ( isDateCode ).should.be.ok;
+    ( typeof isDateCode ).should.equal( "function" );
   });
 
-  it('should return truthy values for getLabel', function() {
+  it('.getLabel should return function', function() {
     var getLabelCode = new Date().getLabel;
-    should( getLabelCode ).be.ok;
+    
+    ( getLabelCode ).should.be.ok;
+    ( typeof getLabelCode ).should.equal( "function" );
   });
 
-  it('should return truthy values for getDelta', function() {
+  it('.getDelta should return function', function() {
     var getDeltaCode = new Date().getDelta;
-    should( getDeltaCode ).be.ok;
+
+    ( getDeltaCode ).should.be.ok;
+    ( typeof getDeltaCode ).should.equal( "function" );
   });
 
 
   ///////////////////////////////////////////////
-  // Verifies Date extensions work as shoulded //
+  // Verifies Date extensions work as should //
   ///////////////////////////////////////////////
 
-  it('should have isDate return correctly', function() {
-    should( date.isDate()  ).be.ok;
-    should( date2.isDate() ).be.ok;
-
-    should(   {}.isDate() ).not.be.ok;
-    should( ("").isDate() ).not.be.ok;
-    should( (55).isDate() ).not.be.ok;
+  it('.isDate() should return true for actual dates', function() {
+    ( date.isDate()  ).should.equal( true );
+    ( date2.isDate() ).should.equal( true );
   });
 
-  it('should have getLabel return correct string', function() {
-    date.getLabel().should.equal( 'Jan 01 2000' );
-    date2.getLabel().should.equal( 'Jan 04 2000');
+  it('.isDate() should return false for non-valid types/ values', function() {
+    ( new Date('Malformed Date String').isDate() ).should.not.be.ok;
+    ( {}                               .isDate() ).should.not.be.ok;
+    ( ("")                             .isDate() ).should.not.be.ok;
+    ( (55)                             .isDate() ).should.not.be.ok;
   });
 
-  it('should have getDelta equal what is expected', function() {
+  it('.getLabel() should return expected string', function() {
+    (  date.getLabel() ).should.equal( 'Jan 01 2000' );
+    ( date2.getLabel() ).should.equal( 'Jan 04 2000' );
+  });
+
+  it('.getDelta() should equal expected deltas', function() {
     ( date.getDelta( date2 ) ).should.eql({ days : 3, hours : 0, minutes : 0, seconds : 0, milliseconds : 0 });
     ( date2.getDelta( date ) ).should.eql({ days : 3, hours : 0, minutes : 0, seconds : 0, milliseconds : 0 });
+  });
+
+  it('.getDelta() for invalid dates should return empty Object', function() {
+    var invalidDateDelta = date.getDelta( new Date('Invalid Date String')  );
+
+    ( typeof invalidDateDelta            ).should.equal( "object" );
+    ( JSON.stringify( invalidDateDelta ) ).should.equal( "{}" );
   });
 
 });
 
 describe('Array Extensions', function() {
 
-  it('should have Array.merge defined', function() {
-    should( [].merge ).be.ok;
+  it('.merge should return function', function() {
+    var merge = [].merge;
+
+    ( merge ).should.be.ok;
+    ( typeof merge ).should.equal( "function" );
   });
 
-  it('should return merged array', function() {
+  it('.merge() should return merged array', function() {
     var arr1 = [1,2,3],
         arr2 = [4,5,6];
 
     ( arr1.merge(arr2) ).should.eql([1, 2, 3, 4, 5, 6]);
   });
 
-  it('should alter original array', function() {
+  it('.merge() alter original array', function() {
     var arr1 = [1,2,3],
         arr2 = [4,5,6];
 
     arr1.merge(arr2);
     arr1.should.eql([1, 2, 3, 4, 5, 6]);
   });
+});
+
+describe('Object Extensions', function() {
+
 });

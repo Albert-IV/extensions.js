@@ -8,7 +8,7 @@
 
   DATE_EXT.getLabel = (function() {
     return function() {
-      if( isNaN( this.getTime() ) ) return NaN;
+      if( isNaN( this.getTime() ) ) return '';
 
       return this.toString().split(' ').slice(1,4).join(' ');
     };
@@ -17,7 +17,7 @@
   DATE_EXT.getDelta = (function() {
     return function(deltaDate) {
       if( typeof deltaDate == "string" ) deltaDate = new Date(deltaDate);
-      if( !this.isDate() || !deltaDate.isDate() ) return false;
+      if( !this.isDate() || !deltaDate.isDate() ) return {};
       
       // Get # of milliseconds between dates
       var delta = this.getTime() > deltaDate.getTime() ?
