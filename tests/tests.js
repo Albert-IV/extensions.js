@@ -82,7 +82,7 @@ describe('Date.prototype', function() {
 
 });
 
-describe('Array Extensions', function() {
+describe('Array.prototype', function() {
 
   it('.merge should return function', function() {
     var merge = [].merge;
@@ -99,15 +99,15 @@ describe('Array Extensions', function() {
   });
 
   it('.merge() alter original array', function() {
-    var arr1 = [1,2,3],
-        arr2 = [4,5,6];
+    var arr1 = [1,2,3]
+      , arr2 = [4,5,6];
 
     arr1.merge(arr2);
     arr1.should.eql([1, 2, 3, 4, 5, 6]);
   });
 });
 
-describe('Object Extensions', function() {
+describe('Object.prototype', function() {
 
   it('.get should return function', function() {
     var getFunction = {}.get;
@@ -140,13 +140,13 @@ describe('Object Extensions', function() {
   });
 
   /*
-    TODO: Handle more edge-cases.
+    TODO: Handle more edgey-cases.
      - dot syntax for arrays:  obj.arr.0.someOtherProperty
      - syntax-mix?:  obj.arr[0].anotherArr.0
   */
 });
 
-describe('String Extensions', function() {
+describe('String.prototype', function() {
 
   it('.formatPhone should return function', function() {
     var formatPhone = "".formatPhone;
@@ -155,9 +155,24 @@ describe('String Extensions', function() {
     ( typeof formatPhone ).should.equal( 'function' );
   });
 
-  it('.formatPhone should return expected format', function() {
-    var formattedPhone = "737-4844832 x58";
+  it('.trim should return function', function() {
+    var trim = "".trim;
 
-    ( formattedPhone.formatPhone() ).should.equal( "(737) 484-4832 x58" )
+    ( trim ).should.be.ok;
+    ( typeof trim ).should.equal( "function" );
+  });
+
+  it('.formatPhone() should return expected format', function() {
+    var formattedPhone = "737-4844832 x58"
+      , shortPhone = "33322200";
+
+    ( formattedPhone.formatPhone() ).should.equal( "(737) 484-4832 x58" );
+    ( shortPhone.formatPhone() ).should.equal( "(333) 222-00__" );
+  });
+
+  it('.trim should remove whitespace from both sides of string', function() {
+    var str = "   No more spaces!          ";
+
+    ( str.trim() ).should.equal( 'No more spaces!' );
   });
 });
