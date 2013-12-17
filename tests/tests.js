@@ -8,7 +8,6 @@ describe('Date.prototype', function() {
       date2 = new Date(2000, 0, 4);
 
 
-  it('should return 1 equals 1', function() { (1).should.equal(1); });  
   //////////////////////////////////////
   // Checks that date functions exist //
   //////////////////////////////////////
