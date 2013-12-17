@@ -1,11 +1,12 @@
 extensions.js
-=============
+================================
 
-The aim of this plugin is to add methods JavaScript natives to include missing and helpful functionality.
+*The aim of this plugin is to add methods JavaScript natives to include missing and helpful functionality.*
 
-#DATES
+DATES
+-------------------------
 
-## Date.prototype.isDate()
+### Date.prototype.isDate()
 ```javascript
 var date = new Date()
   , badDate = new Date('This is not a date')
@@ -19,14 +20,14 @@ badDate.isDate(); // returns false
 ```
 This method returns `true` or `false` depending on if the Date object is a valid date.  No more `!isNaN(dateObj.getTime())`
 
-## Date.prototype.getLabel()
+### Date.prototype.getLabel()
 ```javascript
 var date = new Date();
 date.getLabel();    //  Returns in this format: "MTH DD YYYY"
 ```
 This returns the date as a formatted date string.
 
-## Date.prototype.getDelta()
+### Date.prototype.getDelta()
 ```javascript
 var date1 = new Date( 2000, 0, 1), date2 = new Date( 2000, 0, 4);
 date1.getDelta( date2 );  // Returns object with delta
@@ -39,8 +40,10 @@ date1.getDelta( date2 );  // Also accepts date strings
 Returns an object with the caluclated delta difference.  Currently only up to day (ie no months are ever returned).
 
 
-#ARRAYS
-##Array.prototype.merge()
+ARRAYS
+-------------------------
+
+###Array.prototype.merge()
 ```javascript
 var arr = [1, 2, 3];
 arr.merge([4, 5, 6];  // Returns [1, 2, 3, 4, 5, 6]
@@ -49,9 +52,10 @@ This combines the two arrays together.  This does alter the original array, as w
 
 
 
-#OBJECTS
+OBJECTS
+-------------------------
 
-##Object.prototype.get()
+###Object.prototype.get()
 ```javascript
 var obj = { name : { first : "Al", last : "Bundy" } };
 obj.get('name.last');  // returns "Bundy"
@@ -61,9 +65,10 @@ This allows you to reach into objects and get their values, if it exists.  If it
 
 
 
-#STRINGS
+STRINGS
+-------------------------
 
-#String.prototype.formatPhone()
+###String.prototype.formatPhone()
 ```javascript
 var badlyFormattedPhone = "737-4844832 x58";
 badlyFormattedPhone.formatPhone()
@@ -71,19 +76,14 @@ badlyFormattedPhone.formatPhone()
 ```
 This strips every non-number in the string, then formats occordingly.  If there aren't enough numbers, will fill the missing numbers with an underscore "_".  If the number is longer than a US phone number, it will consider the extra numbers an extension.
 
-#String.prototype.trim()
+###String.prototype.trim()
 ```javascript
 var str = "   No more spaces!          ";
 str.trim();  // Returns "No more spaces!"
 ```
 This method returns the string without leading or ending spaces.
 
-
-
-
 ####A Small Note
 
 According to some, you shouldn't be adding prototypes to native JavaScript.  [Here's an argument for that.](http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/)
 
-tl;dr
-It's probably not as bad as you think.
