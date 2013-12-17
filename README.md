@@ -1,11 +1,7 @@
 extensions.js
 =============
 
-The aim of this plugin is to add methods JavaScript natives to include missing or helpful functionality.  
-
-Ever needed to get a human readable date from a Date object?  Ever reached deep into an object and gotten the inevitable Cannot read property 'x' of undefined?  Let's fix these minor headaches, with science!
-
-(Well, JavaScript.  Almost the same.)
+The aim of this plugin is to add methods JavaScript natives to include missing and helpful functionality.
 
 #DATES
 
@@ -87,7 +83,7 @@ This method returns the string without leading or ending spaces.
 
 ####A Small Note
 
-According to some, you shouldn't be adding prototypes to native JavaScript.  [Here's an article from someone who's probably smarter than me.](http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/)
+According to some, you shouldn't be adding prototypes to native JavaScript.  [Here's an argument for that.](http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/)
 
 tl;dr
 It's probably not as bad as you think.
