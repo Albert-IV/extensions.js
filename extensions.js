@@ -142,7 +142,7 @@
     result += numStr.substring(6, 10);
 
     if (numStr.length > 10) {
-      result += ' x' + numStr.substring(11);
+      result += ' x' + numStr.substring(10);
     }
 
     return result;
