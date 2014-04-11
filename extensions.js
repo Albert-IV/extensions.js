@@ -18,7 +18,7 @@
     return function(deltaDate) {
       if( typeof deltaDate == "string" ) deltaDate = new Date(deltaDate);
       if( !this.isDate() || !deltaDate.isDate() ) return {};
-      
+
       // Get # of milliseconds between dates
       var delta = this.getTime() > deltaDate.getTime() ?
                           this.getTime() - deltaDate.getTime() :
@@ -28,7 +28,7 @@
       var toSecond = function(d) { return Math.floor( d / 1000 ); }
         , secondToMilli = function(d) { return d * 1000; }
 
-        , toMinute = function(d) { return Math.floor( d / 1000 / 60 ); } 
+        , toMinute = function(d) { return Math.floor( d / 1000 / 60 ); }
         , minuteToMilli = function(d) { return d * 1000 * 60; }
 
         , toHour = function(d) { return Math.floor( d / 1000 / 60 / 60 ); }
@@ -82,7 +82,7 @@
     }
   })();
 
-  OBJ_EXT.get = (function() {
+  OBJ_EXT.peel = (function() {
     var _get = function(obj, path) {
       var key = path.shift(),
           lb, rb, idx, val;

@@ -55,11 +55,11 @@ This combines the two arrays together.  This does alter the original array, as w
 OBJECTS
 -------------------------
 
-###Object.prototype.get()
+###Object.prototype.peel()
 ```javascript
 var obj = { name : { first : "Al", last : "Bundy" } };
-obj.get('name.last');  // returns "Bundy"
-obj.get('path.not.in.object'); // Returns 0
+obj.peel('name.last');  // returns "Bundy"
+obj.peel('path.not.in.object'); // Returns 0
 ```
 This allows you to reach into objects and get their values, if it exists.  If it doesn't, will return 0.  The advantage of this is you avoid a dreaded `obj.name && obj.name.first` situation, and not have to worry about a malformed object blowing up your application.
 

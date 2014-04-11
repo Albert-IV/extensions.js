@@ -1,7 +1,8 @@
-require('../extensions.js')
+"use strict";
+require('../extensions.js');
 
 var should = require('should');
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 describe('Date.prototype', function() {
   var date = new Date(2000, 0, 1),
@@ -24,7 +25,7 @@ describe('Date.prototype', function() {
 
     ( objectIsDateCode ).should.be.ok;
     ( typeof objectIsDateCode ).should.equal( "function" );
-    
+
     ( arrayIsDateCode ).should.be.ok;
     ( typeof arrayIsDateCode ).should.equal( "function" );
 
@@ -34,7 +35,7 @@ describe('Date.prototype', function() {
 
   it('.getLabel should return function', function() {
     var getLabelCode = new Date().getLabel;
-    
+
     ( getLabelCode ).should.be.ok;
     ( typeof getLabelCode ).should.equal( "function" );
   });
@@ -109,34 +110,34 @@ describe('Array.prototype', function() {
 
 describe('Object.prototype', function() {
 
-  it('.get should return function', function() {
-    var getFunction = {}.get;
+  it('.peel should return function', function() {
+    var getFunction = {}.peel;
 
     ( getFunction ).should.be.ok;
     ( typeof getFunction ).should.equal( "function" );
   });
 
-  it('.get() on obj.key should work', function() {
+  it('.peel() on obj.key should work', function() {
     var obj = { foo : "bar" };
 
-    ( obj.get("foo") ).should.equal('bar');
-    ( typeof obj.get("name") ).should.equal( "undefined" );
+    ( obj.peel("foo") ).should.equal('bar');
+    ( typeof obj.peel("name") ).should.equal( "undefined" );
   });
 
-  it('.get() o obj.key[i] should work', function() {
+  it('.peel() o obj.key[i] should work', function() {
     var obj = { arr : [ "string"] };
 
-    ( obj.get("arr[0]") ).should.equal( "string" );
-    ( typeof obj.get("arr[2]") ).should.equal( "undefined" );
+    ( obj.peel("arr[0]") ).should.equal( "string" );
+    ( typeof obj.peel("arr[2]") ).should.equal( "undefined" );
   });
 
-  it('.get() should work on arrays too!', function() {
+  it('.peel() should work on arrays too!', function() {
     var obj = { arr : [ ]}
     var arrObj = [ "string", { name : 'Jim' } ];
 
-    ( arrObj.get('[0]') ).should.equal( "string" );
-    ( arrObj.get('[1]') ).should.eql( { name : "Jim" } );
-    ( typeof arrObj.get('[3]') ).should.equal( "undefined" );
+    ( arrObj.peel('[0]') ).should.equal( "string" );
+    ( arrObj.peel('[1]') ).should.eql( { name : "Jim" } );
+    ( typeof arrObj.peel('[3]') ).should.equal( "undefined" );
   });
 
   /*
